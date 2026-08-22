@@ -126,6 +126,35 @@
   }
 }
 
+.auth-error {
+  margin-top: 16px;
+  color: #d1435b;
+  font-size: 14px;
+}
+
+.auth-result {
+  margin-top: 24px;
+  text-align: left;
+
+  h2 {
+    font-size: 16px;
+  }
+
+  pre {
+    width: 100%;
+    max-height: 320px;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 6px;
+    background: var(--code-bg);
+    color: var(--text-h);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 145%;
+  }
+}
+
 .passkey-summary {
   display: flex;
   justify-content: center;
