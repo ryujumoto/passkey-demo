@@ -6,9 +6,6 @@ export const Layout = () => {
       <header className="app-header">
         <span className="app-title">passkey-demo</span>
         <nav className="app-nav">
-          <NavLink to="/" end>
-            ホーム
-          </NavLink>
           <NavLink to="/login">ログイン</NavLink>
           <NavLink to="/register">登録</NavLink>
         </nav>
