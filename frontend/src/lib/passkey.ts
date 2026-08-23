@@ -14,7 +14,7 @@ export const createPasskey = async ({
   challenge: BufferSource;
   userId: BufferSource;
 }): Promise<RegistrationResponseJSON> => {
-  if (!window.PublicKeyCredential || !PublicKeyCredential.getClientCapabilities) {
+  if (!window.PublicKeyCredential) {
     throw new PasskeyUnsupportedError();
   }
 
@@ -42,5 +42,25 @@ export const createPasskey = async ({
   })) as PublicKeyCredential;
 
   const result = credential.toJSON() as RegistrationResponseJSON;
+  return result;
+};
+
+export const getPasskey = async ({
+  challenge,
+}: {
+  challenge: BufferSource;
+}): Promise<AuthenticationResponseJSON> => {
+  if (!window.PublicKeyCredential) {
+    throw new PasskeyUnsupportedError();
+  }
+
+  const credential = (await navigator.credentials.get({
+    publicKey: {
+      challenge,
+      timeout: 120000, // 2分
+    },
+  })) as PublicKeyCredential;
+
+  const result = credential.toJSON() as AuthenticationResponseJSON;
   return result;
 };
